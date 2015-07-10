@@ -3,11 +3,11 @@
 
 var my_name = "Rusty Rountree";
 var formattedName = HTMLheaderName.replace("%data%", my_name);
-$("#header").append(formattedName);
+$("#topContacts").before(formattedName);
 
 var my_role = "Front End Ninja";
 var formattedRole = HTMLheaderRole.replace("%data%", my_role);
-$("#header").append(formattedRole);
+$("#topContacts").before(formattedRole);
 
 var bio = {
     name: "Rusty Rountree",
@@ -23,6 +23,26 @@ var bio = {
     welcomeMessage: "I am Rusty and I am AWESOME!",
     skills: ["C/C++", "Java", "JavaScript", "OOP", "Web Development"]
 };
+
+var displayContactInfo = function () {
+    //HTMLcontactGeneric NOT USED
+    //HTMLblog NOT USED
+    var fmtMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
+    var fmtEmail = HTMLemail.replace("%data%", bio.contacts.email);
+    var fmtGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
+    var fmtTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
+    var fmtLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+    var fmtFinal = fmtMobile + fmtEmail + fmtGitHub + fmtTwitter + fmtLocation;
+    $("#topContacts").append(fmtFinal);
+    $("#footerContacts").append(fmtFinal);
+};
+
+displayContactInfo();
+
+var fmtBioPic = HTMLbioPic.replace("%data%", "images/fry.jpg");
+$("#header").append(fmtBioPic);
+var fmtWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+$("#header").append(fmtWelcomeMsg);
 
 var education = {
     "schools": [
@@ -49,6 +69,53 @@ var education = {
             "url": "https://www.udacity.com"
         }
     ]
+};
+
+var displayEducation = function () {
+    $("#education").append(HTMLschoolStart);
+    $("#education").append(HTMLonlineClasses);
+    $("#education").append(HTMLonlineClassStart);
+
+    var fmtSchoolName = "";
+    var fmtSchoolDegree = "";
+    var fmtSchoolDates = "";
+    var fmtSchoolLocation = "";
+    var fmtSchoolMajor = "";
+
+    var fmtOnlineTitle = "";
+    var fmtOnlineSchool = "";
+    var fmtOnlineDates = "";
+    var fmtOnlineURL = "";
+
+    var fmtFinal = "";
+
+    var numSchools = education.schools.length;
+    var schoolIndex;
+    var school = null;
+    var numOnlineSchools = education.onlineCourses.length;
+    var onlineSchoolIndex;
+    var onlineSchool = null;
+
+    for (schoolIndex = 0; schoolIndex < numSchools; schoolIndex++) {
+        school = education.schools[schoolIndex];
+        fmtSchoolName = HTMLschoolName.replace("%data%", school.name);
+        fmtSchoolDegree = HTMLschoolDegree.replace("%data%", school.degree);
+        fmtSchoolDates = HTMLschoolDates.replace("%data%", school.dates);
+        fmtSchoolLocation = HTMLschoolLocation.replace("%data%", school.city);
+        fmtSchoolMajor = HTMLschoolMajor.replace("%data%", school.majors);
+        fmtFinal = fmtSchoolName + fmtSchoolDegree + fmtSchoolDates + fmtSchoolLocation + fmtSchoolMajor;
+        $(".education-entry:last").append(fmtFinal);
+    }
+
+    for (onlineSchoolIndex = 0; onlineSchoolIndex < numOnlineSchools; onlineSchoolIndex++) {
+        onlineSchool = education.onlineCourses[onlineSchoolIndex];
+        fmtOnlineTitle = HTMLonlineTitle.replace("%data%", onlineSchool.title);
+        fmtOnlineSchool = HTMLonlineSchool.replace("%data%", onlineSchool.school);
+        fmtOnlineDates = HTMLonlineDates.replace("%data%", onlineSchool.dates);
+        fmtOnlineURL = HTMLonlineURL.replace("%data%", onlineSchool.url);
+        fmtFinal = fmtOnlineTitle + fmtOnlineSchool + fmtOnlineDates + fmtOnlineURL;
+        $(".online-class-entry:last").append(fmtFinal);
+    }
 };
 
 var work = {
@@ -136,9 +203,10 @@ var displaySkills = function () {
     var numSkills = bio.skills.length;
     var skillIndex;
 
-    $("#header").append(HTMLskillsStart);
+    var skillStart = $("#header").append(HTMLskillsStart);
+    skillStart.css("list-style-type", "none");
     for (skillIndex = 0; skillIndex < numSkills; skillIndex++) {
-        $("#skills").append(HTMLskills.replace("%data%", bio.skills[skillIndex]));
+        skillStart.append(HTMLskills.replace("%data%", bio.skills[skillIndex]));
     }
 };
 
@@ -170,5 +238,11 @@ var displayWork = function () {
 displaySkills();
 displayWork();
 projects.display();
+displayEducation();
 
 $("#mapDiv").append(googleMap);
+
+//displayContactInfo();
+$(document).click(function (loc) {
+    logClicks(loc.pageX, loc.pageY);
+});
