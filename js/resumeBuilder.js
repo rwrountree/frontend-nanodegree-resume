@@ -1,56 +1,56 @@
 
 var bio = {
-    name: "Rusty Rountree",
-    role: "Front End Ninja",
+    name: "John Doe",
+    role: "Front-End Ninja",
     contacts: {
-        mobile: "(731) 313-7721",
-        email: "rustonrountree@gmail.com",
-        github: "rwrountree",
-        twitter: "@rusty_rountree",
+        mobile: "(555) 555-5555",
+        email: "johndoe@gmail.com",
+        github: "johndoe",
+        twitter: "@johndoe",
         location: "Jackson, TN"
     },
-    welcomeMessage: "I am Rusty and I am AWESOME!",
-    skills: ["C/C++", "Java", "JavaScript", "OOP", "Web Development"],
+    welcomeMessage: "I am John Doe!",
+    skills: ["HTML", "CSS", "JavaScript", "Web Development"],
     bioPic: "images/fry.jpg",
     display: function () {
         var formattedName = HTMLheaderName.replace("%data%", this.name);
         var formattedRole = HTMLheaderRole.replace("%data%", this.role);
-        var fmtBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
-        var fmtWelcomeMsg = HTMLwelcomeMsg.replace("%data%", bio.welcomeMessage);
+        var fmtBioPic = HTMLbioPic.replace("%data%", this.bioPic);
+        var fmtWelcomeMsg = HTMLwelcomeMsg.replace("%data%", this.welcomeMessage);
 
-        function displayContactInfo() {
-            var fmtMobile = HTMLmobile.replace("%data%", bio.contacts.mobile);
-            var fmtEmail = HTMLemail.replace("%data%", bio.contacts.email);
-            var fmtGitHub = HTMLgithub.replace("%data%", bio.contacts.github);
-            var fmtTwitter = HTMLtwitter.replace("%data%", bio.contacts.twitter);
-            var fmtLocation = HTMLlocation.replace("%data%", bio.contacts.location);
+        function displayContactInfo(obj) {
+            var fmtMobile = HTMLmobile.replace("%data%", obj.contacts.mobile);
+            var fmtEmail = HTMLemail.replace("%data%", obj.contacts.email);
+            var fmtGitHub = HTMLgithub.replace("%data%", obj.contacts.github);
+            var fmtTwitter = HTMLtwitter.replace("%data%", obj.contacts.twitter);
+            var fmtLocation = HTMLlocation.replace("%data%", obj.contacts.location);
             var fmtFinal = fmtMobile + fmtEmail + fmtGitHub + fmtTwitter + fmtLocation;
 
             $("#topContacts").append(fmtFinal);
             $("#footerContacts").append(fmtFinal);
         }
 
-        function displaySkills() {
-            var numSkills = bio.skills.length;
+        function displaySkills(obj) {
+            var numSkills = obj.skills.length;
             var skillIndex;
 
             var skillStart = $("#header").append(HTMLskillsStart);
             skillStart.css("list-style-type", "none");
 
             for (skillIndex = 0; skillIndex < numSkills; skillIndex++) {
-                skillStart.append(HTMLskills.replace("%data%", bio.skills[skillIndex]));
+                skillStart.append(HTMLskills.replace("%data%", obj.skills[skillIndex]));
             }
         }
 
         $("#topContacts").before(formattedName);
         $("#topContacts").before(formattedRole);
 
-        displayContactInfo();
+        displayContactInfo(this);
 
         $("#header").append(fmtBioPic);
         $("#header").append(fmtWelcomeMsg);
 
-        displaySkills();
+        displaySkills(this);
     }
 };
 
@@ -69,13 +69,13 @@ var education = {
         {
             "title": "Programming Mobile Applications for Android Handheld Systems",
             "school": "Coursera",
-            "dates": 2014,
+            "date": 2014,
             "url": "https://www.coursera.com"
         },
         {
-            "title": "Front End Web Developer Nanodegree",
+            "title": "Front-End Web Developer Nanodegree",
             "school": "Udacity",
-            "dates": 2015,
+            "date": 2015,
             "url": "https://www.udacity.com"
         }
     ],
@@ -97,15 +97,15 @@ var education = {
 
         var fmtFinal = "";
 
-        var numSchools = education.schools.length;
+        var numSchools = this.schools.length;
         var schoolIndex;
         var school = null;
-        var numOnlineSchools = education.onlineCourses.length;
+        var numOnlineSchools = this.onlineCourses.length;
         var onlineSchoolIndex;
         var onlineSchool = null;
 
         for (schoolIndex = 0; schoolIndex < numSchools; schoolIndex++) {
-            school = education.schools[schoolIndex];
+            school = this.schools[schoolIndex];
             fmtSchoolName = HTMLschoolName.replace("%data%", school.name);
             fmtSchoolDegree = HTMLschoolDegree.replace("%data%", school.degree);
             fmtSchoolDates = HTMLschoolDates.replace("%data%", school.dates);
@@ -119,7 +119,7 @@ var education = {
             onlineSchool = education.onlineCourses[onlineSchoolIndex];
             fmtOnlineTitle = HTMLonlineTitle.replace("%data%", onlineSchool.title);
             fmtOnlineSchool = HTMLonlineSchool.replace("%data%", onlineSchool.school);
-            fmtOnlineDates = HTMLonlineDates.replace("%data%", onlineSchool.dates);
+            fmtOnlineDates = HTMLonlineDates.replace("%data%", onlineSchool.date);
             fmtOnlineURL = HTMLonlineURL.replace("%data%", onlineSchool.url);
             fmtFinal = fmtOnlineTitle + fmtOnlineSchool + fmtOnlineDates + fmtOnlineURL;
             $(".online-class-entry:last").append(fmtFinal);
@@ -132,20 +132,20 @@ var work = {
         {
             "employer": "JACOA",
             "title": "Supportive Services",
+            "location": "Jackson, TN",
             "dates": "June 2013-Present",
-            "description": "Computer Administration, Grant Systems, Nightwatchman",
-            "location": "Jackson, TN"
+            "description": "Computer Administration, Grant Systems, Nightwatchman"
         },
         {
             "employer": "Rockstar Games",
             "title": "Generalist Engineer",
+            "location": "Andover, MA",
             "dates": "December 2007-May 2009",
-            "description": "Professional Slave to anything and everything!",
-            "location": "Andover, MA"
+            "description": "Professional Slave to anything and everything!"
         }
     ],
     display: function () {
-        var numJobs = work.jobs.length;
+        var numJobs = this.jobs.length;
         var jobIndex;
         var job = null;
 
@@ -157,7 +157,7 @@ var work = {
         var fmtFinal = "";
 
         for (jobIndex = 0; jobIndex < numJobs; jobIndex++) {
-            job = work.jobs[jobIndex];
+            job = this.jobs[jobIndex];
             fmtEmployer = HTMLworkEmployer.replace("%data%", job.employer);
             fmtTitle = HTMLworkTitle.replace("%data%", job.title);
             fmtLocation = HTMLworkLocation.replace("%data%", job.location);
@@ -236,7 +236,7 @@ var projects = {
 var workedAndLivedMap = {
     map: googleMap,
     display: function () {
-        $("#mapDiv").append(googleMap);
+        $("#mapDiv").append(this.map);
     }
 };
 
@@ -251,4 +251,3 @@ var myResume = {
 };
 
 myResume.display();
-
