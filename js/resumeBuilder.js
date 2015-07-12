@@ -9,7 +9,7 @@ var bio = {
         twitter: "@johndoe",
         location: "Jackson, TN"
     },
-    welcomeMessage: "I am John Doe!",
+    welcomeMessage: "I am John Doe!!!",
     skills: ["HTML", "CSS", "JavaScript", "Web Development"],
     bioPic: "images/fry.jpg",
     display: function () {
@@ -57,8 +57,8 @@ var bio = {
 var education = {
     "schools": [
         {
-            "name": "Millsaps College",
-            "location": "Jackson, MS",
+            "name": "Some College",
+            "location": "Chicago, IL",
             "degree": "BS",
             "majors": "Computer Science",
             "dates": 2000,
@@ -67,16 +67,16 @@ var education = {
     ],
     "onlineCourses": [
         {
-            "title": "Programming Mobile Applications for Android Handheld Systems",
-            "school": "Coursera",
-            "date": 2014,
-            "url": "https://www.coursera.com"
-        },
-        {
             "title": "Front-End Web Developer Nanodegree",
             "school": "Udacity",
             "date": 2015,
             "url": "https://www.udacity.com"
+        },
+        {
+            "title": "Programming Mobile Applications for Android Handheld Systems",
+            "school": "Coursera",
+            "date": 2014,
+            "url": "https://www.coursera.com"
         }
     ],
     display: function () {
@@ -130,18 +130,20 @@ var education = {
 var work = {
     "jobs": [
         {
-            "employer": "JACOA",
-            "title": "Supportive Services",
-            "location": "Jackson, TN",
+            "employer": "Job 1",
+            "title": "Job Title",
+            "location": "Boston, MA",
             "dates": "June 2013-Present",
-            "description": "Computer Administration, Grant Systems, Nightwatchman"
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie nisi in dolor " +
+            "porta, at vehicula metus volutpat. Pellentesque luctus non justo a porttitor."
         },
         {
-            "employer": "Rockstar Games",
-            "title": "Generalist Engineer",
-            "location": "Andover, MA",
-            "dates": "December 2007-May 2009",
-            "description": "Professional Slave to anything and everything!"
+            "employer": "Job 0",
+            "title": "Job Title",
+            "location": "Cheyenne, WY",
+            "dates": "December 2007-May 2013",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie nisi in dolor " +
+            "porta, at vehicula metus volutpat. Pellentesque luctus non justo a porttitor."
         }
     ],
     display: function () {
@@ -173,9 +175,10 @@ var work = {
 var projects = {
     "projects": [
         {
-            "title": "Project 0",
-            "dates": 2013,
-            "description": "Lots of stuff!",
+            "title": "Project 2",
+            "dates": 2015,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie nisi in dolor " +
+            "porta, at vehicula metus volutpat. Pellentesque luctus non justo a porttitor.",
             "images": [
                 "images/fry.jpg",
                 "images/fry.jpg"
@@ -184,16 +187,18 @@ var projects = {
         {
             "title": "Project 1",
             "dates": 2014,
-            "description": "Lots of stuff!",
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie nisi in dolor " +
+            "porta, at vehicula metus volutpat. Pellentesque luctus non justo a porttitor.",
             "images": [
                 "images/fry.jpg",
                 "images/fry.jpg"
             ]
         },
         {
-            "title": "Project 2",
-            "dates": 2015,
-            "description": "Lots of stuff!",
+            "title": "Project 0",
+            "dates": 2013,
+            "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus molestie nisi in dolor " +
+            "porta, at vehicula metus volutpat. Pellentesque luctus non justo a porttitor.",
             "images": [
                 "images/fry.jpg",
                 "images/fry.jpg"
